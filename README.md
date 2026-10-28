@@ -8,8 +8,8 @@ Built as the Web3task intern assignment.
 
 | | URL |
 |---|---|
-| **Live app (Frontend, Vercel)** | https://yt-watch-party-flax.vercel.app |
-| **Backend (Render)** | https://yt-watch-party-gtk9.onrender.com |
+| **Live app (Frontend, Vercel)** | https://yt-watch-party-six.vercel.app |
+| **Backend (Render)** | https://yt-watch-party-x4d7.onrender.com |
 | **Source code** | https://github.com/TheShreya27/yt-watch-party |
 | **Demo video** | https://www.youtube.com/watch?v=WHTBXnK-Z3o |
 
@@ -221,8 +221,8 @@ It checks that a Participant is rejected for `play`, `change_video` and `assign_
 | Variable | Where | Example | Purpose |
 |---|---|---|---|
 | `PORT` | server | `3001` | Server port (Render sets this automatically) |
-| `CLIENT_URL` | server | `https://yt-watch-party-flax.vercel.app` | Allowed frontend origin for CORS. No trailing slash |
-| `VITE_SERVER_URL` | client | `https://yt-watch-party-gtk9.onrender.com` | Backend URL used by Socket.IO. No trailing slash |
+| `CLIENT_URL` | server | `https://yt-watch-party-six.vercel.app` | Allowed frontend origin for CORS. No trailing slash |
+| `VITE_SERVER_URL` | client | `https://yt-watch-party-x4d7.onrender.com` | Backend URL used by Socket.IO. No trailing slash |
 
 ---
 

@@ -1,4 +1,21 @@
 {
+  "name": "yt-watch-party",
+  "version": "1.0.0",
+  "description": "YouTube Watch Party",
+  "main": "server/server.js",
+  "scripts": {
+    "build": "cd server && npm install",
+    "start": "node server/server.js"
+  },
+  "author": "Shreya Bajpai",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "socket.io": "^4.8.4",
+    "socket.io-client": "^4.8.4"
+  },
   "devDependencies": {
     "concurrently": "^10.0.6"
   }

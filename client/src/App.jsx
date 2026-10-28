@@ -7,7 +7,7 @@ import Player from './Player.jsx'
 const SERVER_URL =
   import.meta.env.VITE_SERVER_URL ||
   (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
-    ? 'https://yt-watch-party-gtk9.onrender.com'
+    ? 'https://yt-watch-party-x4d7.onrender.com'
     : 'http://localhost:3001')
 
 function RoleBadge({ role }) {
@@ -25,7 +25,16 @@ function RoleBadge({ role }) {
 }
 
 function App() {
-  const socket = useMemo(() => io(SERVER_URL, { autoConnect: false }), [])
+  const socket = useMemo(
+    () =>
+      io(SERVER_URL, {
+        autoConnect: false,
+        extraHeaders: {
+          "Bypass-Tunnel-Reminder": "true",
+        },
+      }),
+    []
+  )
   const [username, setUsername] = useState('')
   const [roomCode, setRoomCode] = useState(() => (
     new URLSearchParams(window.location.search)

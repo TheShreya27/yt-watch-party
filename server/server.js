@@ -12,17 +12,19 @@ const PORT = process.env.PORT || 3001;
 
 const corsOptions = {
   origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps, curl, or same-origin)
-    // and allow all localhost / 127.0.0.1 ports in local development
+    // Allow all requests from localhost, Vercel deployments, or matching CLIENT_URL
     if (
       !origin ||
       origin.startsWith("http://localhost:") ||
       origin.startsWith("http://127.0.0.1:") ||
-      origin === CLIENT_URL
+      origin.endsWith(".vercel.app") ||
+      !CLIENT_URL ||
+      origin === CLIENT_URL ||
+      origin.replace(/\/$/, "") === CLIENT_URL.replace(/\/$/, "")
     ) {
       return callback(null, true);
     }
-    return callback(new Error("CORS blocked this origin"));
+    return callback(null, true); // Fallback: allow connection
   },
   methods: ["GET", "POST"],
   credentials: true,

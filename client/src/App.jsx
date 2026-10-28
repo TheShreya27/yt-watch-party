@@ -4,7 +4,11 @@ import { io } from 'socket.io-client'
 import './App.css'
 import Player from './Player.jsx'
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3001'
+const SERVER_URL =
+  import.meta.env.VITE_SERVER_URL ||
+  (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
+    ? 'https://yt-watch-party-gtk9.onrender.com'
+    : 'http://localhost:3001')
 
 function RoleBadge({ role }) {
   const style = {

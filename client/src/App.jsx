@@ -294,13 +294,13 @@ function App() {
             <span className="text-lg font-bold tracking-tight">loop<span className="text-violet-300">.</span></span>
           </a>
           <div className="flex items-center gap-2.5 rounded-full border border-white/[0.08] bg-white/[0.035] px-3.5 py-2 text-xs text-slate-400">
-            <span className={`h-1.5 w-1.5 rounded-full ${connection === 'connected' ? 'bg-emerald-400 shadow-[0_0_10px_#34d399]' : 'bg-amber-400'}`} />
+            <span className={`h-2 w-2 rounded-full ${connection === 'connected' ? 'bg-emerald-400 shadow-[0_0_10px_#34d399] pulse-indicator' : 'bg-amber-400'}`} />
             {connection === 'connected' ? 'Server connected' : connection === 'connecting' ? 'Connecting' : 'Reconnecting'}
           </div>
         </header>
 
         {roomId ? (
-          <section className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center py-8">
+          <section className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center py-8 animate-fade-in">
             <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
               <button
                 type="button"
@@ -310,7 +310,7 @@ function App() {
                 <ArrowLeft size={16} /> Back to lobby
               </button>
               <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.07] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-300">
+                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.07] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-300 animate-pulse-gentle">
                   <Radio size={13} /> Watch party live
                 </span>
                 {myUser && <RoleBadge role={myUser.role} />}
@@ -461,7 +461,7 @@ function App() {
                       <p className="py-3 text-center text-xs text-slate-500">No messages yet. Say hello!</p>
                     ) : (
                       messages.map((message, index) => (
-                        <div key={`${message.timestamp}-${message.userId}-${index}`}>
+                        <div key={`${message.timestamp}-${message.userId}-${index}`} className="animate-message">
                           <div className="flex items-baseline justify-between gap-2">
                             <p className="truncate text-xs font-semibold text-slate-200">{message.username}</p>
                             <time className="shrink-0 text-[10px] text-slate-600">
@@ -544,7 +544,7 @@ function App() {
           </section>
         ) : (
           <section className="grid flex-1 items-center gap-12 py-16 lg:grid-cols-[1fr_0.88fr] lg:gap-20">
-            <div className="max-w-xl">
+            <div className="max-w-xl animate-fade-in-up">
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-300/15 bg-violet-300/[0.07] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-violet-200">
                 <Video size={13} /> Your people. Your playback.
               </div>
@@ -564,7 +564,7 @@ function App() {
               </div>
             </div>
 
-            <div className="panel mx-auto w-full max-w-md rounded-3xl p-6 sm:p-8">
+            <div className="panel mx-auto w-full max-w-md rounded-3xl p-6 sm:p-8 animate-fade-in-up-delay">
               <div className="mb-7">
                 <p className="text-xs font-semibold uppercase tracking-[0.17em] text-violet-300">Let’s get you in</p>
                 <h2 className="mt-2 text-2xl font-bold tracking-tight text-white">Start watching</h2>

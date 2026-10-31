@@ -16,6 +16,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
+  background: #090a10;
 }
 
 button,
@@ -29,33 +30,68 @@ button {
 
 .app-shell {
   background:
-    radial-gradient(ellipse at 48% 48%, rgba(32, 27, 54, 0.14), transparent 56%),
+    radial-gradient(ellipse at 48% 48%, rgba(32, 27, 54, 0.18), transparent 56%),
     #090a10;
 }
 
+/* 🌟 Floating Living Ambient Glow */
 .ambient {
   position: absolute;
   z-index: 0;
-  width: 360px;
-  height: 360px;
+  width: 420px;
+  height: 420px;
   pointer-events: none;
   border-radius: 9999px;
-  filter: blur(110px);
-  opacity: 0.12;
+  filter: blur(120px);
+  opacity: 0.14;
+  will-change: transform, opacity;
 }
 
 .ambient-one {
   top: 15%;
-  left: -250px;
+  left: -220px;
   background: #7655ff;
+  animation: floatOrbOne 16s ease-in-out infinite alternate;
 }
 
 .ambient-two {
-  right: -260px;
+  right: -240px;
   bottom: 2%;
   background: #bd467b;
+  animation: floatOrbTwo 20s ease-in-out infinite alternate;
 }
 
+@keyframes floatOrbOne {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.13;
+  }
+  50% {
+    transform: translate(140px, 80px) scale(1.22);
+    opacity: 0.20;
+  }
+  100% {
+    transform: translate(70px, 160px) scale(0.95);
+    opacity: 0.15;
+  }
+}
+
+@keyframes floatOrbTwo {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translate(-120px, -90px) scale(1.25);
+    opacity: 0.19;
+  }
+  100% {
+    transform: translate(-60px, -160px) scale(0.92);
+    opacity: 0.14;
+  }
+}
+
+/* 🌟 Brand Mark Interactive Hover */
 .brand-mark {
   display: grid;
   width: 34px;
@@ -65,20 +101,46 @@ button {
   border-radius: 11px;
   color: #d1c4ff;
   background: linear-gradient(145deg, rgba(141, 112, 255, 0.2), rgba(86, 63, 156, 0.08));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
+.brand-mark:hover {
+  transform: rotate(-8deg) scale(1.08);
+  box-shadow: 0 0 22px rgba(141, 112, 255, 0.38);
+  border-color: rgba(194, 176, 255, 0.45);
+}
+
+/* 🌟 Panels with Glow on Hover */
 .panel {
   border: 1px solid rgba(255, 255, 255, 0.09);
   background: linear-gradient(145deg, rgba(24, 25, 37, 0.96), rgba(15, 16, 25, 0.96));
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.32), inset 0 1px rgba(255, 255, 255, 0.025);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.panel:hover {
+  border-color: rgba(199, 183, 255, 0.18);
+  box-shadow: 0 32px 100px rgba(0, 0, 0, 0.45), 0 0 28px rgba(118, 85, 255, 0.07);
+}
+
+/* 🌟 Animated Shimmering Gradient Text */
 .gradient-text {
   color: #b7a1ff;
-  background: linear-gradient(95deg, #d3c5ff 0%, #a38aff 48%, #e095d4 100%);
+  background: linear-gradient(95deg, #d3c5ff 0%, #a38aff 30%, #f472b6 65%, #d3c5ff 100%);
+  background-size: 250% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: textShine 7s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 .field-label {
@@ -99,7 +161,7 @@ button {
   color: #f4f2fa;
   background: rgba(5, 6, 12, 0.54);
   font-size: 13px;
-  transition: border-color 150ms ease, box-shadow 150ms ease;
+  transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
 }
 
 .text-field::placeholder {
@@ -109,8 +171,10 @@ button {
 .text-field:focus {
   border-color: rgba(172, 147, 255, 0.68);
   box-shadow: 0 0 0 3px rgba(142, 113, 255, 0.13);
+  background: rgba(7, 8, 16, 0.7);
 }
 
+/* 🌟 Buttons with Sheen & Micro-Interactions */
 .primary-button,
 .secondary-button {
   display: inline-flex;
@@ -121,23 +185,45 @@ button {
   border-radius: 12px;
   font-size: 13px;
   font-weight: 700;
-  transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+  transition: transform 150ms ease, background 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+  user-select: none;
 }
 
 .primary-button {
+  position: relative;
+  overflow: hidden;
   border: 1px solid rgba(199, 183, 255, 0.27);
   color: #fff;
   background: linear-gradient(100deg, #7459df, #8867ed);
   box-shadow: 0 7px 22px rgba(113, 83, 219, 0.2);
 }
 
-.primary-button:hover,
-.secondary-button:hover {
-  transform: translateY(-1px);
+.primary-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 65%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+
+.primary-button:hover::after {
+  transform: translateX(100%);
 }
 
 .primary-button:hover {
+  transform: translateY(-2px);
   background: linear-gradient(100deg, #8167e8, #9576f4);
+  box-shadow: 0 10px 28px rgba(113, 83, 219, 0.35);
 }
 
 .secondary-button {
@@ -147,8 +233,14 @@ button {
 }
 
 .secondary-button:hover {
-  border-color: rgba(187, 166, 255, 0.3);
-  background: rgba(255, 255, 255, 0.075);
+  transform: translateY(-2px);
+  border-color: rgba(187, 166, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.primary-button:active,
+.secondary-button:active {
+  transform: scale(0.97) translateY(0);
 }
 
 .avatar,
@@ -159,6 +251,12 @@ button {
   border-radius: 50%;
   color: #e5dcff;
   font-weight: 700;
+  transition: transform 0.25s ease;
+}
+
+.avatar:hover,
+.mini-avatar:hover {
+  transform: scale(1.12);
 }
 
 .avatar {
@@ -188,18 +286,107 @@ button {
   background: #a65b79;
 }
 
+/* 🌟 Radar Pulse for Connection Indicator */
+.pulse-indicator {
+  position: relative;
+}
+
+.pulse-indicator::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  background: #34d399;
+  animation: radarPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes radarPing {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  75%, 100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* 🌟 Live Badge Heartbeat */
+.animate-pulse-gentle {
+  animation: gentlePulse 2.4s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.82;
+    transform: scale(0.98);
+  }
+}
+
+/* 🌟 Entrance Animations */
+.animate-fade-in-up {
+  animation: fadeInUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in-up-delay {
+  animation: fadeInUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out both;
+}
+
+.animate-message {
+  animation: messageSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .toast {
-  animation: toast-in 180ms ease-out;
+  animation: toast-in 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes toast-in {
   from {
     opacity: 0;
-    transform: translate(-50%, 8px);
+    transform: translate(-50%, 14px) scale(0.96);
   }
-
   to {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0) scale(1);
   }
 }
